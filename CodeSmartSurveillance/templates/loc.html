@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Map</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Your Location on Map</h2>
+        <div id="map" style="height: 500px;"></div>
+    </div>
+
+    <script>
+        // Location variables from Flask
+        const latitude = {{ location['latitude'] }};
+        const longitude = {{ location['longitude'] }};
+
+        // Initialize Map
+        const map = L.map('map').setView([latitude, longitude], 13);
+
+        // Add OpenStreetMap Tile Layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add Marker
+        L.marker([latitude, longitude]).addTo(map)
+            .bindPopup("You are here!")
+            .openPopup();
+    </script>
+</body>
+</html>
+
+
+{% endblock %}

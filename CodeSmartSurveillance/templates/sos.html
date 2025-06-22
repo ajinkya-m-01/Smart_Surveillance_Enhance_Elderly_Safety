@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS Alert</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+    <!-- SOS Card -->
+    <div class="card shadow-lg mx-auto" style="max-width: 500px;">
+        <div class="card-header text-center bg-danger text-white">
+            <h4 class="fw-bold">Emergency SOS</h4>
+        </div>
+        <div class="card-body text-center">
+            <p class="mb-4">Press the button below to send an emergency alert. Help will be notified immediately.</p>
+            <!-- SOS Form -->
+            <form class="user" action="" method="post" enctype="multipart/form-data">
+                <button type="submit" class="btn btn-danger btn-lg w-100 fw-bold">Send SOS</button>
+            </form>
+        </div>
+        <div class="card-footer text-center text-muted small">
+            <p>For immediate assistance, dial 112.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}

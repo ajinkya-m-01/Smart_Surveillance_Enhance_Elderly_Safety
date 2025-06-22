@@ -1,0 +1,5 @@
+Smart Surveillance System Report
+Generated on: 2025-05-23 00:19:33
+System Status: Active
+Detection Status: Operational
+Processing Rate: 60 FPS

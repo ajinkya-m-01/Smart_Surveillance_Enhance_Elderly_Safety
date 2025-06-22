@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block content %}
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <div class="row">
+
+                        <div class="col-lg-6 mb-4">
+
+                            <!-- Illustrations -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Prediction</h6>
+                                </div>
+                                <div class="card-body text-justify">
+                                    <div class="text-center">
+                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" 
+                                            style="float:center;width:100%;height:100%;object-fit:fill;"
+                                            src="static/img/test.jpg" alt="...">
+                                    </div>
+                                    <p>{{ result }}</p>
+                                    <a href="image">Test another image &rarr;</a>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                  
+
+                        <div class="col-lg-6 mb-4">
+
+                            <!-- Illustrations -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Parameters</h6>
+                                </div>
+                                <div class="card-body text-justify">
+                                    <!--div class="text-center">
+                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                            src="static/img/login.png" alt="...">
+                                    </div-->
+                                    <p>Type: {{ gtype }}</p>
+                                    <p>Weight: {{ weight }}</p>
+                                    <p>Hydrogen: {{ hydrogen }}</p>
+                                    <p>Fertilizer: {{ fertilizer }}</p>
+                                    <a target="_blank" rel="nofollow" href="image">Test another image &rarr;</a>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                
+
+
+{% endblock %}
+
+</div>

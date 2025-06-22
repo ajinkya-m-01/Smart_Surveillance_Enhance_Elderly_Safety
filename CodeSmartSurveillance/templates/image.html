@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link href="static/css/image.css" rel="stylesheet">
+
+<main class="main_full">
+	<div class="container">
+	<form action="" method="post" enctype="multipart/form-data">
+		<div class="uploaded_file_view" id="uploaded_view">
+			<span class="file_remove">X</span>
+			
+		</div>
+		<button id="predict" class="btn btn-primary btn-user btn-block panel" style="display: none;">
+			Predict
+		</button>
+
+		
+		<div class="panel">
+			<div class="button_outer">
+				<div class="btn_upload">
+					<input type="file" id="upload_file" name="doc">
+					Upload Image
+				</div>
+
+				<div class="processing_bar"></div>
+				<div class="success_box"></div>
+
+			</div>
+		
+		</div>
+	</form>
+		<div class="error_msg"></div>
+
+	</div>
+</main>
+
+<script>
+	var btnUpload = $("#upload_file"),
+		btnOuter = $(".button_outer");
+		x = document.getElementById("predict");
+	btnUpload.on("change", function(e){
+		var ext = btnUpload.val().split('.').pop().toLowerCase();
+		if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+			$(".error_msg").text("Not an Image...");
+		} else {
+			$(".error_msg").text("");
+			btnOuter.addClass("file_uploading");
+			setTimeout(function(){
+				btnOuter.addClass("file_uploaded");
+				x.style.display = "block";
+			},3000);
+			var uploadedFile = URL.createObjectURL(e.target.files[0]);
+			setTimeout(function(){
+				$("#uploaded_view").append('<img src="'+uploadedFile+'" />').addClass("show");
+			},3500);
+		}
+	});
+	$(".file_remove").on("click", function(e){
+		$("#uploaded_view").removeClass("show");
+		$("#uploaded_view").find("img").remove();
+		btnOuter.removeClass("file_uploading");
+		btnOuter.removeClass("file_uploaded");
+		x.style.display = "none";
+	});
+</script>
+
+
+{% endblock %}

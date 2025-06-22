@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid py-4">
+
+    <!-- Video Stream Section -->
+    <div class="row">
+        <!-- Main Video Stream -->
+        <div class="col-12">
+            <div class="card shadow h-100">
+                <div class="card-header bg-gradient-primary text-white py-3 d-flex justify-content-between align-items-center">
+                    <h6 class="m-0 font-weight-bold">
+                        <i class="fas fa-video mr-2"></i>Live Surveillance Feed
+                    </h6>
+                    <div class="btn-group">
+                        <button class="btn btn-light btn-sm" title="Full Screen" onclick="toggleFullScreen()">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="position-relative">
+                        <img class="img-fluid" id="videoStream" src="{{ url_for('video_stream') }}" 
+                            alt="Live Surveillance Feed"
+                            style="width: 100%; height: auto; min-height: 400px; object-fit: cover;">
+                        <div class="position-absolute" style="bottom: 1rem; right: 1rem;">
+                            <span class="badge badge-pill badge-light shadow-sm">
+                                <i class="fas fa-circle text-danger mr-1"></i>LIVE
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- Recent Activities section removed -->
+        </div>
+    </div>
+</div>
+
+<!-- Add custom JavaScript for real-time clock -->
+<script>
+function updateTime() {
+    const now = new Date();
+    document.getElementById('currentTime').textContent = now.toLocaleTimeString();
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+// Update detection status periodically
+function updateDetectionStatus() {
+    fetch('/get_detection_status')
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector('.text-success.text-uppercase + .h5').textContent = data.status;
+            document.querySelector('.text-info.text-uppercase + .h5').textContent = data.fps + ' FPS';
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// Initialize status updates
+setInterval(updateDetectionStatus, 5000); // Update every 5 seconds
+updateDetectionStatus(); // Initial update
+
+// Handle report download
+document.querySelector('[data-action="download-report"]').addEventListener('click', function() {
+    window.location.href = '/download_report';
+});
+
+// Update system status color
+function updateStatusColor() {
+    const statusText = document.getElementById('status-text').textContent;
+    const statusIndicator = document.getElementById('status-indicator');
+    if (statusText === 'Active') {
+        statusIndicator.classList.add('text-success');
+        statusIndicator.classList.remove('text-danger');
+    } else {
+        statusIndicator.classList.add('text-danger');
+        statusIndicator.classList.remove('text-success');
+    }
+}
+
+// Call updateStatusColor initially and whenever the status changes
+updateStatusColor();
+setInterval(updateStatusColor, 5000); // Update every 5 seconds
+
+// Fullscreen functionality
+function toggleFullScreen() {
+    var elem = document.getElementById("videoStream");
+    if (!document.fullscreenElement) {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    }
+}
+
+// Real-time status panel
+function updateStatusPanel() {
+    fetch('/get_detection_status')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('status').textContent = `Status: ${data.status}`;
+            document.getElementById('fps').textContent = `Processing: ${data.fps} FPS`;
+            
+            const activitiesHtml = data.activities
+                .map(activity => `<p>${activity.date}<br>${activity.message}</p>`)
+                .join('');
+            document.getElementById('activities').innerHTML = activitiesHtml;
+        });
+}
+
+// Update status panel every 2 seconds
+setInterval(updateStatusPanel, 2000);
+updateStatusPanel();
+</script>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/detection-status.js') }}"></script>
+{% endblock %}
+

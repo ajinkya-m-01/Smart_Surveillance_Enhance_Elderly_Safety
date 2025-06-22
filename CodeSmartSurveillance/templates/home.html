@@ -1,0 +1,156 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Project Overview</h1>
+    </div>
+
+    <div class="row">
+
+        <!-- Domain Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Domain</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">AI-Machine Learning</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-chalkboard fa-2x text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dataset Source Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Dataset Source</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Kaggle</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-database fa-2x text-success"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Algorithm Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Algorithm</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">CNN</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-chart-area fa-2x text-info"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Framework Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Framework</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">Flask</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-archway fa-2x text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-6">
+
+            <!-- Problem Statement Card -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h6 class="m-0 font-weight-bold">Problem Statement</h6>
+                </div>
+                <div class="card-body text-justify">
+                    Waste management is a growing concern in urban environments, with the improper disposal of garbage causing environmental pollution and health hazards. Accurate and efficient garbage type identification is crucial for effective recycling and waste management practices. This project aims to develop a deep learning-based system for automated garbage type identification using computer vision techniques. The system will classify various types of garbage, such as plastic, paper, glass, and organic waste, by analyzing images captured through cameras installed in waste collection areas. The proposed solution has the potential to revolutionize waste management practices, reduce environmental pollution, and promote sustainable living.
+                </div>
+            </div>
+
+            <!-- Introduction Card -->
+            <div class="card shadow mb-4">
+                <div class="card-header bg-success text-white">
+                    <h6 class="m-0 font-weight-bold">Introduction</h6>
+                </div>
+                <div class="card-body text-justify">
+                    The indiscriminate disposal of garbage is a pressing issue that adversely affects the environment and public health. Inefficient waste management leads to the accumulation of non-biodegradable waste in landfills and oceans, contributing to pollution and ecological damage. The recycling of waste materials is a key component of sustainable waste management. However, for recycling to be effective, it is essential to accurately identify the type of garbage being disposed of.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <!-- Proposed Solution Card -->
+            <div class="card shadow mb-4">
+                <div class="card-header bg-info text-white">
+                    <h6 class="m-0 font-weight-bold">Proposed Solution</h6>
+                </div>
+                <div class="card-body text-justify">
+                    The primary problem we aim to address in this project is the automated identification of garbage types using deep learning. Specifically, we need to develop a system capable of:
+
+                    <ul>
+                        <li>Collecting images of various types of garbage from waste collection areas.</li>
+                        <li>Preprocessing and augmenting the image dataset to improve model performance.</li>
+                        <li>Training a deep learning model to classify garbage into predefined categories, such as plastic, paper, glass, and organic waste.</li>
+                        <li>Deploying the trained model in waste collection areas equipped with cameras for real-time garbage type identification.</li>
+                        <li>Integrating the system with existing waste management infrastructure to facilitate efficient recycling and disposal processes.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conclusion Card -->
+            <div class="card shadow mb-4">
+                <a href="#collapseCardExample" class="d-block card-header bg-warning text-white py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                    <h6 class="m-0 font-weight-bold">Conclusion</h6>
+                </a>
+                <div class="collapse show" id="collapseCardExample">
+                    <div class="card-body text-justify">
+                        In conclusion, our project focuses on leveraging deep learning techniques to address the critical issue of garbage type identification in waste management. By automating this process, we aim to reduce the burden on human workers, improve the accuracy of garbage sorting, and promote environmentally responsible practices.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+
+
+

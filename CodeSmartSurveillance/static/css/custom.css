@@ -1,0 +1,107 @@
+/* Custom styles for Smart Surveillance System */
+
+/* Smooth transitions */
+.card,
+.btn,
+.nav-link {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Card hover effects */
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Button hover effects */
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Status indicators */
+.icon-circle {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.icon-circle:hover {
+    transform: scale(1.1);
+}
+
+/* Live badge pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.badge i.text-danger {
+    animation: pulse 2s infinite;
+}
+
+/* Video container hover effect */
+.video-container {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.video-container:hover {
+    transform: scale(1.01);
+}
+
+/* Custom scrollbar for activity feed */
+.activity-feed::-webkit-scrollbar {
+    width: 6px;
+}
+
+.activity-feed::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.activity-feed::-webkit-scrollbar-thumb {
+    background: #4e73df;
+    border-radius: 3px;
+}
+
+.activity-feed::-webkit-scrollbar-thumb:hover {
+    background: #224abe;
+}
+
+/* Activity feed item hover effect */
+.activity-feed .d-flex {
+    padding: 0.5rem;
+    border-radius: 0.35rem;
+    transition: all 0.2s ease;
+}
+
+.activity-feed .d-flex:hover {
+    background-color: rgba(78, 115, 223, 0.05);
+}
+
+/* Status cards enhance */
+.border-left-success,
+.border-left-info,
+.border-left-warning {
+    border-left-width: 0.25rem !important;
+    transition: all 0.3s ease;
+}
+
+.border-left-success:hover,
+.border-left-info:hover,
+.border-left-warning:hover {
+    border-left-width: 0.5rem !important;
+}
